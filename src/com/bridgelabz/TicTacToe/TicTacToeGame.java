@@ -6,13 +6,16 @@ public class TicTacToeGame {
     static char[] board = new char[10];
     static char userLetter;
     static char computerLetter;
+    static int position;
+    static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         createEmptyBoard();
         chooseLetter();
         showBoard();
-        makeMove(5,userLetter,board);
+        playerMove();
         showBoard();
+
     }
 
     static void createEmptyBoard(){
@@ -78,5 +81,16 @@ public class TicTacToeGame {
             default:
                 break;
         }
+    }
+
+    static void playerMove(){
+        System.out.println("Enter the position(1-9)");
+        position = sc.nextInt();
+        while(board[position]!=' '){
+            System.out.println("Invalid option!! Please Try Again");
+            position = sc.nextInt();
+        }
+        makeMove(position,userLetter,board);
+        System.out.println("Player move to position "+position);
     }
 }
