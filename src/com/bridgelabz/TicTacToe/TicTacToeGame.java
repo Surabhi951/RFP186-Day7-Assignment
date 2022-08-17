@@ -3,6 +3,10 @@ package com.bridgelabz.TicTacToe;
 import java.util.Scanner;
 
 public class TicTacToeGame {
+    public enum CurrentPlayer{
+        PLAYER,COMPUTER
+    }
+
     static char[] board = new char[10];
     static char userLetter;
     static char computerLetter;
@@ -15,6 +19,8 @@ public class TicTacToeGame {
         showBoard();
         playerMove();
         showBoard();
+        CurrentPlayer currentPlayer= toss();
+        System.out.println(currentPlayer);
 
     }
 
@@ -92,5 +98,16 @@ public class TicTacToeGame {
         }
         makeMove(position,userLetter,board);
         System.out.println("Player move to position "+position);
+    }
+
+    static CurrentPlayer toss(){
+        if((int)(Math.random()*10)%2==1){
+            System.out.println("Player will start the game");
+            return CurrentPlayer.PLAYER;
+        }
+        else{
+            System.out.println("Computer will start the game");
+            return CurrentPlayer.COMPUTER;
+        }
     }
 }
