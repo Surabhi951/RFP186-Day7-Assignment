@@ -298,6 +298,4 @@ public class TicTacToeGame {
         }
         return false;
     }
-
-
 }
