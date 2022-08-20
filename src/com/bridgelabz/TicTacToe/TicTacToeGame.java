@@ -14,7 +14,7 @@ public class TicTacToeGame {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        CurrentPlayer currentPlayer= toss();
+        CurrentPlayer currentPlayer = toss();
         createEmptyBoard();
         chooseLetter();
         boolean isBlockAble;
@@ -24,21 +24,23 @@ public class TicTacToeGame {
         while(true) {
             if (currentPlayer == CurrentPlayer.PLAYER) {
                 playerMove();
-                isGameOver=isGameOver(board,userLetter);
+                isGameOver = isGameOver(board,userLetter);
             }
             else {
-                isWinAble=isWinAble(board);
-                isBlockAble=isBlockAble(board);
-
+                isWinAble = isWinAble(board);
                 if(isWinAble){
                     showBoard();
                     break;
                 }
-                if(!isBlockAble){
-                    computerMove();
+                isBlockAble = isBlockAble(board);
+                if(!isBlockAble) {
+                    boolean takeCorner = takeCorner(board, computerLetter);
+                    if (!takeCorner) {
+                        computerMove();
+                    }
                 }
 
-                isGameOver=isGameOver(board,computerLetter);
+                isGameOver = isGameOver(board,computerLetter);
             }
             showBoard();
             if(isGameOver){
@@ -299,5 +301,21 @@ public class TicTacToeGame {
         return false;
     }
 
-
+    static boolean takeCorner(char[] board,char letter){
+        if(board[1]==' '){
+            board[1]=letter;
+            return true;
+        }
+        else if(board[3]==' '){
+            board[3]=letter;
+            return true;
+        } else if (board[7]==' ') {
+            board[7]=letter;
+            return true;
+        } else if (board[9]==' ') {
+            board[9]=letter;
+            return true;
+        }
+        return false;
+    }
 }
