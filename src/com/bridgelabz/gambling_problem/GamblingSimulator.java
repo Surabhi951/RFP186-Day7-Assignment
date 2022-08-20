@@ -1,10 +1,10 @@
 package com.bridgelabz.gambling_problem;
 
 public class GamblingSimulator {
+
     static int DAILY_STAKE = 100;
     static int PER_DAY_BET = 1;
     static int win = 1;
-
 
     public static void main(String[] args) {
         System.out.println("Welcome to Gambling Simulator");
@@ -22,4 +22,6 @@ public class GamblingSimulator {
         System.out.println(DAILY_STAKE  );
 
     }
+
 }
+
