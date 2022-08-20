@@ -34,8 +34,8 @@ public class TicTacToeGame {
                 }
                 isBlockAble = isBlockAble(board);
                 if(!isBlockAble) {
-                    boolean takeCorner = takeCorner(board, computerLetter);
-                    if (!takeCorner) {
+                    boolean takeCornerOrCentre = takeCornerOrCentre(board, computerLetter);
+                    if (!takeCornerOrCentre) {
                         computerMove();
                     }
                 }
@@ -301,7 +301,7 @@ public class TicTacToeGame {
         return false;
     }
 
-    static boolean takeCorner(char[] board,char letter){
+    static boolean takeCornerOrCentre(char[] board,char letter){
         if(board[1]==' '){
             board[1]=letter;
             return true;
