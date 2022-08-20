@@ -77,39 +77,39 @@ public class TicTacToeGame {
 
         switch(position){
             case 1:
-                if(board[1]==' ')
+                if(board[1] ==' ')
                     board[1] = currentPlayerLetter;
                 break;
             case 2:
-                if(board[2]==' ')
+                if(board[2] ==' ')
                     board[2] = currentPlayerLetter;
                 break;
             case 3:
-                if(board[3]==' ')
+                if(board[3] ==' ')
                     board[3] = currentPlayerLetter;
                 break;
             case 4:
-                if(board[4]==' ')
+                if(board[4] ==' ')
                     board[4] = currentPlayerLetter;
                 break;
             case 5:
-                if(board[5]==' ')
+                if(board[5] ==' ')
                     board[5] = currentPlayerLetter;
                 break;
             case 6:
-                if(board[6]==' ')
+                if(board[6] ==' ')
                     board[6] = currentPlayerLetter;
                 break;
             case 7:
-                if(board[7]==' ')
+                if(board[7] ==' ')
                     board[7] = currentPlayerLetter;
                 break;
             case 8:
-                if(board[8]==' ')
+                if(board[8] ==' ')
                     board[8] = currentPlayerLetter;
                 break;
             case 9:
-                if(board[9]==' ')
+                if(board[9] ==' ')
                     board[9] = currentPlayerLetter;
                 break;
             default:
@@ -120,7 +120,7 @@ public class TicTacToeGame {
     static void playerMove(){
         System.out.println("Enter the position(1-9)");
         position = sc.nextInt();
-        while(board[position]!=' '){
+        while(board[position] != ' '){
             System.out.println("Invalid option!! Please Try Again");
             position = sc.nextInt();
         }
@@ -130,7 +130,7 @@ public class TicTacToeGame {
     }
 
     static CurrentPlayer toss(){
-        if((int)(Math.random()*10)%2==1){
+        if((int)(Math.random()*10) %2 == 1){
             System.out.println("Player will start the game");
             return CurrentPlayer.PLAYER;
         }
@@ -143,7 +143,7 @@ public class TicTacToeGame {
 
     static boolean isWinAble(char[] board){
 
-        for(int i=1;i<10;i+=3) {
+        for(int i=1; i<10; i+=3) {
             if (board[i] == computerLetter && board[i+1] == computerLetter && board[i+2] == ' ') {
                 board[i+2] = computerLetter;
                 System.out.println("Computer won");
@@ -158,7 +158,7 @@ public class TicTacToeGame {
                 return true;
             }
         }
-        for(int i=1;i<4;i++) {
+        for(int i=1; i<4; i++) {
             if (board[i] == computerLetter && board[i+3] == computerLetter && board[i+6] == ' ') {
                 board[i+6] = computerLetter;
                 System.out.println("Computer won");
@@ -205,7 +205,7 @@ public class TicTacToeGame {
     }
     static boolean isBlockAble(char[] board){
 
-        for(int i=1;i<10;i+=3) {
+        for(int i=1; i<10; i+=3) {
             if (board[i] == userLetter && board[i+1] == userLetter && board[i+2] == ' ') {
                 board[i+2] = computerLetter;
                 System.out.println("Computer moved to position "+ (i+2));
@@ -220,7 +220,7 @@ public class TicTacToeGame {
                 return true;
             }
         }
-        for(int i=1;i<4;i++) {
+        for(int i=1; i<4; i++) {
             if (board[i] == userLetter && board[i+3] == userLetter && board[i+6] == ' ') {
                 board[i+6] = computerLetter;
                 System.out.println("Computer moved to position "+ (i+6));
@@ -268,7 +268,7 @@ public class TicTacToeGame {
 
     static void computerMove(){
         position = (int)((Math.random()*10)%9)+1;
-        while(board[position]!=' '){
+        while(board[position] != ' '){
             position = (int)((Math.random()*10)%9)+1;
         }
         makeMove(position,computerLetter,board);
@@ -277,14 +277,14 @@ public class TicTacToeGame {
 
     public static boolean isGameOver(char[] board,char letter){
 
-        boolean option1 = (board[1]==letter && board[2] == letter && board[3] == letter);
-        boolean option2 = (board[4]==letter && board[5] == letter && board[6] == letter);
-        boolean option3 = (board[7]==letter && board[8] == letter && board[9] == letter);
-        boolean option4 = (board[1]==letter && board[4] == letter && board[7] == letter);
-        boolean option5 = (board[2]==letter && board[5] == letter && board[8] == letter);
-        boolean option6 = (board[3]==letter && board[6] == letter && board[9] == letter);
-        boolean option7 = (board[1]==letter && board[5] == letter && board[9] == letter);
-        boolean option8 = (board[3]==letter && board[5] == letter && board[7] == letter);
+        boolean option1 = (board[1] == letter && board[2] == letter && board[3] == letter);
+        boolean option2 = (board[4] == letter && board[5] == letter && board[6] == letter);
+        boolean option3 = (board[7] == letter && board[8] == letter && board[9] == letter);
+        boolean option4 = (board[1] == letter && board[4] == letter && board[7] == letter);
+        boolean option5 = (board[2] == letter && board[5] == letter && board[8] == letter);
+        boolean option6 = (board[3] == letter && board[6] == letter && board[9] == letter);
+        boolean option7 = (board[1] == letter && board[5] == letter && board[9] == letter);
+        boolean option8 = (board[3] == letter && board[5] == letter && board[7] == letter);
         if( option1 || option2 || option3 || option4 || option5 || option6 || option7 || option8 ){
             if(letter == userLetter) {
                 System.out.println("Player wins!!!");
@@ -302,18 +302,18 @@ public class TicTacToeGame {
     }
 
     static boolean takeCornerOrCentre(char[] board,char letter){
-        if(board[1]==' '){
-            board[1]=letter;
+        if(board[1] == ' '){
+            board[1] = letter;
             return true;
         }
-        else if(board[3]==' '){
-            board[3]=letter;
+        else if(board[3] == ' '){
+            board[3] = letter;
             return true;
-        } else if (board[7]==' ') {
-            board[7]=letter;
+        } else if (board[7] == ' ') {
+            board[7] = letter;
             return true;
-        } else if (board[9]==' ') {
-            board[9]=letter;
+        } else if (board[9] == ' ') {
+            board[9] = letter;
             return true;
         }
         return false;
