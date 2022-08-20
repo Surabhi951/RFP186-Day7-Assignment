@@ -14,40 +14,41 @@ public class TicTacToeGame {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        CurrentPlayer currentPlayer = toss();
-        createEmptyBoard();
-        chooseLetter();
-        boolean isBlockAble;
-        boolean isGameOver;
-        boolean isWinAble;
+        do {
+            CurrentPlayer currentPlayer = toss();
+            createEmptyBoard();
+            chooseLetter();
+            boolean isBlockAble;
+            boolean isGameOver;
+            boolean isWinAble;
 
-        while(true) {
-            if (currentPlayer == CurrentPlayer.PLAYER) {
-                playerMove();
-                isGameOver = isGameOver(board,userLetter);
-            }
-            else {
-                isWinAble = isWinAble(board);
-                if(isWinAble){
-                    showBoard();
+            while (true) {
+                if (currentPlayer == CurrentPlayer.PLAYER) {
+                    playerMove();
+                    isGameOver = isGameOver(board, userLetter);
+                } else {
+                    isWinAble = isWinAble(board);
+                    if (isWinAble) {
+                        showBoard();
+                        break;
+                    }
+                    isBlockAble = isBlockAble(board);
+                    if (!isBlockAble) {
+                        boolean takeCornerOrCentre = takeCornerOrCentre(board, computerLetter);
+                        if (!takeCornerOrCentre) {
+                            computerMove();
+                        }
+                    }
+
+                    isGameOver = isGameOver(board, computerLetter);
+                }
+                showBoard();
+                if (isGameOver) {
                     break;
                 }
-                isBlockAble = isBlockAble(board);
-                if(!isBlockAble) {
-                    boolean takeCornerOrCentre = takeCornerOrCentre(board, computerLetter);
-                    if (!takeCornerOrCentre) {
-                        computerMove();
-                    }
-                }
-
-                isGameOver = isGameOver(board,computerLetter);
+                currentPlayer = (currentPlayer == CurrentPlayer.COMPUTER) ? CurrentPlayer.PLAYER : CurrentPlayer.COMPUTER;
             }
-            showBoard();
-            if(isGameOver){
-                break;
-            }
-            currentPlayer = (currentPlayer == CurrentPlayer.COMPUTER) ? CurrentPlayer.PLAYER : CurrentPlayer.COMPUTER;
-        }
+        } while (playAgain());
     }
 
 
@@ -317,5 +318,17 @@ public class TicTacToeGame {
             return true;
         }
         return false;
+    }
+
+    static boolean playAgain(){
+        System.out.println("If you want to play again press Y");
+        char choice = sc.next().toUpperCase().charAt(0);
+        if (choice == 'Y'){
+            return true;
+        }
+        else {
+            System.out.println("Thank You for playing!!!");
+            return false;
+        }
     }
 }
